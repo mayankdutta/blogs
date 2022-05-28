@@ -3,11 +3,13 @@ import Footer from "./Footer";
 import Home from "./Home";
 import Missing from "./Missing";
 import Header from "./Header";
-import Newpost from "./Newpost";
+import NewPost from "./NewPost";
 import PostPage from "./PostPage";
 import Nav from "./Nav";
 import {Routes, Route, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import {format} from "date-fns"
+import nav from "./Nav";
 
 const App = () => {
     const [posts, setPosts] = useState([
@@ -38,7 +40,27 @@ const App = () => {
     ]);
     const [search, setSearch] = useState("");
     const [searchResult, setSearchResult] = useState([]);
+
+    const [postTitle, setPostTitle] = useState('');
+    const [postBody, setPostBody] = useState('');
     const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+        const datetime = format(new Date(), "MMMM dd, yyyy pp");
+        const newPost = {
+            id: id, title: postTitle, datetime: datetime, body: postBody
+        }
+        const allPosts = [...posts, newPost];
+        setPosts(allPosts);
+
+        setPostTitle('')
+        setPostBody('');
+        navigate('/');
+
+
+    }
 
     const handleDelete = (id) => {
         const updatedPosts = posts.filter(post => post.id !== id);
@@ -51,7 +73,14 @@ const App = () => {
             <Header title={"React JS blog"}/>
             <Routes>
                 <Route path="/" element={<Home posts={posts}/>}/>
-                <Route exact path="/post" element={<Newpost/>}/>
+                <Route exact path="/post" element={<NewPost
+                    handleSubmit={handleSubmit}
+                    postTitle={postTitle}
+                    setPostTitle={setPostTitle}
+                    postBody={postBody}
+                    setPostBody={setPostBody}
+                />}/>
+
                 <Route path="/post/:id" element={<PostPage posts={posts} handleDelete={handleDelete}/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="*" element={<Missing/>}/>

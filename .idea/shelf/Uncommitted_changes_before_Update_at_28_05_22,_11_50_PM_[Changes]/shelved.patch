@@ -1,0 +1,211 @@
+Index: src/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from \"react\";\nimport ReactDOM from \"react-dom/client\";\nimport App from \"./App\";\n\nconst root = ReactDOM.createRoot(document.getElementById(\"root\"));\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.js b/src/index.js
+--- a/src/index.js	(revision 2d547e10b4c5cd1eeb19ada9b37e2ef418987619)
++++ b/src/index.js	(date 1653735734762)
+@@ -1,6 +1,7 @@
+ import React from "react";
+ import ReactDOM from "react-dom/client";
+ import App from "./App";
++import {BrowserRouter, Route, Router, Switch, useHistory} from "react-router-dom";
+ 
+ const root = ReactDOM.createRoot(document.getElementById("root"));
+ root.render(
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	(revision 2d547e10b4c5cd1eeb19ada9b37e2ef418987619)
++++ b/package-lock.json	(date 1653735269922)
+@@ -13,6 +13,7 @@
+         "@testing-library/user-event": "^13.5.0",
+         "react": "^18.1.0",
+         "react-dom": "^18.1.0",
++        "react-router-dom": "^6.3.0",
+         "react-scripts": "5.0.1",
+         "web-vitals": "^2.1.4"
+       }
+@@ -8134,6 +8135,14 @@
+         "he": "bin/he"
+       }
+     },
++    "node_modules/history": {
++      "version": "5.3.0",
++      "resolved": "https://registry.npmjs.org/history/-/history-5.3.0.tgz",
++      "integrity": "sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==",
++      "dependencies": {
++        "@babel/runtime": "^7.7.6"
++      }
++    },
+     "node_modules/hoopy": {
+       "version": "0.1.4",
+       "resolved": "https://registry.npmjs.org/hoopy/-/hoopy-0.1.4.tgz",
+@@ -13542,6 +13551,30 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/react-router": {
++      "version": "6.3.0",
++      "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.3.0.tgz",
++      "integrity": "sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==",
++      "dependencies": {
++        "history": "^5.2.0"
++      },
++      "peerDependencies": {
++        "react": ">=16.8"
++      }
++    },
++    "node_modules/react-router-dom": {
++      "version": "6.3.0",
++      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.3.0.tgz",
++      "integrity": "sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==",
++      "dependencies": {
++        "history": "^5.2.0",
++        "react-router": "6.3.0"
++      },
++      "peerDependencies": {
++        "react": ">=16.8",
++        "react-dom": ">=16.8"
++      }
++    },
+     "node_modules/react-scripts": {
+       "version": "5.0.1",
+       "resolved": "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz",
+@@ -22113,6 +22146,14 @@
+       "resolved": "https://registry.npmjs.org/he/-/he-1.2.0.tgz",
+       "integrity": "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="
+     },
++    "history": {
++      "version": "5.3.0",
++      "resolved": "https://registry.npmjs.org/history/-/history-5.3.0.tgz",
++      "integrity": "sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==",
++      "requires": {
++        "@babel/runtime": "^7.7.6"
++      }
++    },
+     "hoopy": {
+       "version": "0.1.4",
+       "resolved": "https://registry.npmjs.org/hoopy/-/hoopy-0.1.4.tgz",
+@@ -25880,6 +25921,23 @@
+       "resolved": "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz",
+       "integrity": "sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A=="
+     },
++    "react-router": {
++      "version": "6.3.0",
++      "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.3.0.tgz",
++      "integrity": "sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==",
++      "requires": {
++        "history": "^5.2.0"
++      }
++    },
++    "react-router-dom": {
++      "version": "6.3.0",
++      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.3.0.tgz",
++      "integrity": "sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==",
++      "requires": {
++        "history": "^5.2.0",
++        "react-router": "6.3.0"
++      }
++    },
+     "react-scripts": {
+       "version": "5.0.1",
+       "resolved": "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz",
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"blogs\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@testing-library/jest-dom\": \"^5.16.4\",\n    \"@testing-library/react\": \"^13.3.0\",\n    \"@testing-library/user-event\": \"^13.5.0\",\n    \"react\": \"^18.1.0\",\n    \"react-dom\": \"^18.1.0\",\n    \"react-scripts\": \"5.0.1\",\n    \"web-vitals\": \"^2.1.4\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"react-app\",\n      \"react-app/jest\"\n    ]\n  },\n  \"browserslist\": {\n    \"production\": [\n      \">0.2%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ],\n    \"development\": [\n      \"last 1 chrome version\",\n      \"last 1 firefox version\",\n      \"last 1 safari version\"\n    ]\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision 2d547e10b4c5cd1eeb19ada9b37e2ef418987619)
++++ b/package.json	(date 1653735279370)
+@@ -8,6 +8,7 @@
+     "@testing-library/user-event": "^13.5.0",
+     "react": "^18.1.0",
+     "react-dom": "^18.1.0",
++    "react-router-dom": "^6.3.0",
+     "react-scripts": "5.0.1",
+     "web-vitals": "^2.1.4"
+   },
+Index: .idea/blogs.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/blogs.iml b/.idea/blogs.iml
+new file mode 100644
+--- /dev/null	(date 1653735590157)
++++ b/.idea/blogs.iml	(date 1653735590157)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/temp" />
++      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
++      <excludeFolder url="file://$MODULE_DIR$/tmp" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1653735590169)
++++ b/.idea/modules.xml	(date 1653735590169)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/blogs.iml" filepath="$PROJECT_DIR$/.idea/blogs.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1653735590501)
++++ b/.idea/.gitignore	(date 1653735590501)
+@@ -0,0 +1,5 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1653735590189)
++++ b/.idea/vcs.xml	(date 1653735590189)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file

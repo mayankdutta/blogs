@@ -7,7 +7,7 @@ import NewPost from "./NewPost";
 import PostPage from "./PostPage";
 import Nav from "./Nav";
 import {Routes, Route, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {format} from "date-fns"
 import nav from "./Nav";
 
@@ -45,6 +45,14 @@ const App = () => {
     const [postBody, setPostBody] = useState('');
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const filteredResult = posts.filter(
+            post => post.body.toLowerCase().includes(search.toLowerCase()) ||
+                post.title.toLowerCase().includes(search.toLowerCase())
+        )
+        setSearchResult(filteredResult.reverse());
+    }, [posts, search])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
@@ -72,7 +80,7 @@ const App = () => {
             <Nav search={search} setSearch={setSearch}/>
             <Header title={"React JS blog"}/>
             <Routes>
-                <Route path="/" element={<Home posts={posts}/>}/>
+                <Route path="/" element={<Home posts={searchResult ? searchResult : posts}/>}/>
                 <Route exact path="/post" element={<NewPost
                     handleSubmit={handleSubmit}
                     postTitle={postTitle}

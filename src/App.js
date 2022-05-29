@@ -97,7 +97,7 @@ const App = () => {
             <Nav search={search} setSearch={setSearch}/>
             <Header title={"React JS blog"}/>
             <Routes>
-                <Route path="/" element={<Home posts={searchResult}/>}/>
+                <Route path="/" element={<Home posts={searchResult} fetchError={fetchError} isLoading={isLoading}/>}/>
                 <Route exact path="/post" element={<NewPost
                     handleSubmit={handleSubmit}
                     postTitle={postTitle}

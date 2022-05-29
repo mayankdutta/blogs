@@ -6,13 +6,11 @@ const EditPost = ({handleEdit, posts, editTitle, setEditTitle, editBody, setEdit
     const post = posts.find(post => post.id.toString() === id.toString());
 
     useEffect(() => {
-        console.log(post)
-        console.log(id);
         if (post) {
             setEditTitle(post.title);
             setEditBody(post.body);
         }
-    }, [])
+    }, [post, setEditTitle, setEditBody])
 
     return (
         <form onSubmit={e => e.preventDefault()}>

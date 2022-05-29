@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 
 const Post = ({post}) => {
+    console.log("inside the post");
+    console.log(post);
     return (
         <article>
             <Link to={`/post/${post.id}`}>
@@ -8,7 +10,7 @@ const Post = ({post}) => {
                 <p>{post.datetime}</p>
             </Link>
             <p>
-                {post && (post.body.length <= 25 ? post.body : `${post.body.slice(0, 25)}...`)}
+                {post.body?.length <= 25 ? post.body : `${post.body?.slice(0, 25)}...`}
             </p>
         </article>
     );
